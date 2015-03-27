@@ -4,6 +4,7 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
+  config.secret_key = ENV["SCHOLARSARCHIVE_DEVISE_KEY"]
   # config.secret_key = 'b7125686704fe604257cab32debc42995e973b97a53cb090f8a06a6d6a5285e3e23642776a7332612dcd532e638bd6936e47531990cc9efe163ca754061fa899'
 
   # ==> Mailer Configuration

@@ -1,0 +1,28 @@
+user: git
+group: git
+before_install: ./bin/pkgr_before_install.sh
+before_precompile: ./bin/pkgr_before_precompile.sh
+after_precompile: ./bin/pkgr_after_precompile.sh
+services:
+  - redis
+env:
+  - SCHOLARSARCHIVE_DEVISE_KEY=1234af
+  - SCHOLARSARCHIVE_SECRET=12345af
+installer: https://github.com/pkgr/installer.git#suse
+wizards:
+  - https://github.com/terrellt/sa-wizard.git
+targets:
+  ubuntu-14.04:
+    build_dependencies:
+      - pkg-config
+      - libsqlite3-dev
+      - unzip
+    dependencies:
+      - default-jre
+      - ruby
+      - libmysqlclient-dev
+      - imagemagick
+      - redis-server
+      - xorg
+      - openbox
+      - unzip
