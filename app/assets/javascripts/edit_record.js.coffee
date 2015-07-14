@@ -3,3 +3,4 @@ jQuery ->
   switch_button.prependTo($("input.uri_multi_value").siblings(".field-controls"))
   $(".switch-fields").click ->
     $(this).parent().siblings("input").toggleClass("hidden")
+
