@@ -114,7 +114,7 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.1)
-    active-fedora (9.2.0)
+    active-fedora (9.2.1)
       active-triples (~> 0.7.1)
       activesupport (>= 4.1.0)
       deprecation
@@ -679,7 +679,7 @@ GEM
     thread_safe (0.3.5)
     tilt (1.4.1)
     tins (1.5.1)
-    tinymce-rails (4.1.6)
+    tinymce-rails (4.2.1)
       railties (>= 3.1.1)
     tinymce-rails-imageupload (4.0.16.beta)
       railties (>= 3.2, < 5)
