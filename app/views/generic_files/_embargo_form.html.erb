@@ -11,11 +11,9 @@
   </h3>
 
   <div class="col-sm-12">
-    <%= check_box_tag(:embargo) %>
-    <%= label_tag(:embargo, "Enable embargo") %>
-    <%# <% binding.pry %>
+    <p>An embargo will temperorarily restrict access to this item. Examples for why one might request an embargo include: need to publish on the content in a journal or other publishing venue or intellectual property issues (e.g. patentable information). Below, identify the level of visibility you would like for your item during the embargo period, and the date your would like the embargo to end. Once the embargo date passes, the visivility for this item will automatically revert to the visibility level selected above.</p>
     <div id="embargo-options">
-      <span>Select embargo visibility:</span>
+      <span>Select visibility during embargo:</span>
       <div class="radio">
         <label>
           <input type="radio" id="embargo_open" name="embargo" value="<%=Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC %>" <% if !public_perm.blank? %> checked="true"<% end %>/> <span class="label label-success">Open Access</span> Visible to the world.

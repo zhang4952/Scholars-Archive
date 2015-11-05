@@ -1,19 +1,4 @@
 $(function() {
-  $('#embargo').change(function(){
-    if (this.checked) {
-      $('#embargo-options').fadeIn('fast');
-    }
-    else {
-      $('#embargo-options').fadeOut('fast');
-    }
-  });
-
-  if ($("#embargo").is(':checked')){
-    $("#embargo-options").show();
-  } else {
-    $("#embargo-options").hide();
-  }
-
-  $("#datepicker" ).datepicker();
+    $("#datepicker" ).datepicker();
 
 });
