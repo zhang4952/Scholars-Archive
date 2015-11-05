@@ -1,0 +1,36 @@
+<% public_perm = locals[:embargo_perm][:public] %>
+<% registered_perm = locals[:embargo_perm][:registered] %>
+
+<%= javascript_tag do %>
+  <%= render partial: 'generic_files/embargo_select', formats: [:js] %>
+<% end %>
+
+<div class="row">
+  <h3 class="col-sm-12">Embargo<small>(optional)</small>
+    <span id="embargo_tooltip" class="h5"><a rel="popover" data-content="<%= render 'generic_files/embargo_help' %>" data-original-title="Embargo" aria-label="Useage information for embargo" href="#"><i aria-hidden="true" class="help-icon"></i></a></span>
+  </h3>
+
+  <div class="col-sm-12">
+    <%= check_box_tag(:embargo) %>
+    <%= label_tag(:embargo, "Enable embargo") %>
+    <%# <% binding.pry %>
+    <div id="embargo-options">
+      <span>Select embargo visibility:</span>
+      <div class="radio">
+        <label>
+          <input type="radio" id="embargo_open" name="embargo" value="<%=Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC %>" <% if !public_perm.blank? %> checked="true"<% end %>/> <span class="label label-success">Open Access</span> Visible to the world.
+        </label>
+        <label>
+          <input type="radio" id="embargo_psu" name="embargo" value="<%=Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED %>" <% if !registered_perm.blank?  %> checked="true"<% end %> /><span class="label label-info"><%=t('sufia.institution_name') %></span> Visible to all <%=t('sufia.institution_name') %> users.
+        </label>
+        <label>
+          <input type="radio" id="embargo_restricted" name="embargo" value="<%=Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE %>"<% if registered_perm.blank? and public_perm.blank?%> checked="true"<% end %> /> <span class="label label-danger">Private</span> Visible to users/groups specified below, if any.
+        </label>
+      </div>
+      <span>Select embargo date:</span>
+      <input type="text" id="datepicker">
+    </div>
+
+  </div>
+</div>
+
