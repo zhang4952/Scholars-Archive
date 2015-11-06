@@ -5,6 +5,13 @@
 <% public_perm = true if params[:controller] == 'batch' %>
 <% registered_perm = f.object.permissions.map { |perm| perm.access if perm.agent_name == "registered"}.compact.first %>
 
+<% embargo_perm = gf.under_embargo if defined?(gf.under_embargo)%>
+<% embargo_perm = false if params[:controller] == 'batch' %>
+
+<% embargo_release_date = gf.embargo_release_date if defined?(gf.embargo_release_date)%>
+
+<% embargo_perm = false if params[:controller] == 'batch' %>
+
 <%= javascript_tag do %>
   <%= render partial: 'generic_files/embargo_select', formats: [:js] %>
 <% end %>
@@ -28,15 +35,15 @@
   </h3>
   <div class="radio">
     <label>
-      <input type="radio" id="visibility_open" name="visibility" value="<%=Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC %>" <% if gf.open_access? %> checked="true"<% end %>/> <span class="label label-success">Open Access</span> Visible to the world.
+      <input type="radio" id="visibility_open" name="visibility" value="<%=Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC %>" <% if !public_perm.blank? %> checked="true"<% end %>/> <span class="label label-success">Open Access</span> Visible to the world.
 
     </label>
     <label>
-      <input type="radio" id="visibility_psu" name="visibility" value="<%=Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED %>" <% if gf.authenticated_only_access? %> checked="true"<% end %> /><span class="label label-info"><%=t('sufia.institution_name') %></span> Visible to all <%=t('sufia.institution_name') %> users.
+      <input type="radio" id="visibility_psu" name="visibility" value="<%=Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED %>" <% if !registered_perm.blank? %> checked="true"<% end %> /><span class="label label-info"><%=t('sufia.institution_name') %></span> Visible to all <%=t('sufia.institution_name') %> users.
     </label>
 
     <label>
-      <input type="radio" id="visibility_restricted" name="visibility" value="<%=Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE %>"<% if !gf.under_embargo? && gf.private? %> checked="true"<% end %> /> <span class="label label-danger">Private</span> Visible to users/groups specified below, if any.
+      <input type="radio" id="visibility_restricted" name="visibility" value="<%=Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE %>"<% if registered_perm.blank? and public_perm.blank? %> checked="true"<% end %> /> <span class="label label-danger">Private</span> Visible to users/groups specified below, if any.
     </label>
   </div>
 
@@ -47,7 +54,7 @@
     </h3>
 
     <div class="col-sm-12">
-      <input type="checkbox" id="visibility_embargo" name="embargo" value="<%=Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO %>" <% if gf.under_embargo? %> checked="true"<% end %>/>
+      <input type="checkbox" id="visibility_embargo" name="embargo" value="<%=Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO %>" <% if !embargo_perm.blank? %> checked="true"<% end %>/>
       <span class="label label-warning">Embargo</span>
       
       <div id="embargo-options">
@@ -65,7 +72,7 @@
             <input type="radio" id="embargo_restricted" name="embargo" value="restricted" /> <span class="label label-danger">Private</span> Visible to users/groups specified below, if any.
           </label>
         </div>
-        <span><label for="embargo_release_date"> Select embargo date: </label></span><input id="datepicker" type="text" name='embargo_release_date' value="<%=gf.embargo_release_date || Date.tomorrow %>"/>
+        <span><label for="embargo_release_date"> Select embargo date: </label></span><input id="datepicker" type="text" name='embargo_release_date' value="<%=embargo_release_date || Date.tomorrow %>"/>
       </div>
 
     </div>
