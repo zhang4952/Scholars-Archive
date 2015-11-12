@@ -43,7 +43,8 @@ form#permission .well .radio label{
     padding-right: 2em;
 }
 
-.well .label-info {
+.well .label-info,
+.visibility .label-info{
   background-color: $blue-medium-bright;
 }
 
