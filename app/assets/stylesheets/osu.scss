@@ -39,16 +39,26 @@ form#permission .well .radio label{
   padding-bottom: 0.5em;
 }
 
-input#datepicker {
-  width: 96%;
+#embargo-options .form-group.col-xs-3 {
+    padding-right: 2em;
 }
 
 .well .label-info {
   background-color: $blue-medium-bright;
 }
 
+form.new_generic_file .embargo-options-label {
+  padding-left:1em;
+}
+
 #embargo-options {
-  padding-left:1.35em;
+  padding-left: 1.5em;
+}
+
+select#visibility_during_embargo,
+input#datepicker, 
+select#visibility_after_embargo {
+  width: 100%;
 }
 
 /*Mobile phone*/
