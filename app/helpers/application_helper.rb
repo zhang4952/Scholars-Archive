@@ -11,6 +11,8 @@ module ApplicationHelper
           options.reverse!
         when :loosen
           options.delete_at(2)
+        when :embargo
+          
       end
       return options
   end
