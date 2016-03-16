@@ -44,9 +44,9 @@ module ScholarsArchive
     #the first rdf label
     def label
       if options[:value].respond_to?(:preferred_label)
-        options[:value].preferred_label
+        return options[:value].preferred_label
       else
-        options[:value].rdf_label.first.to_s
+        return options[:value].rdf_label.first.to_s
       end
     end
 
