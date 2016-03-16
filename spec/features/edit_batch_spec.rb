@@ -46,7 +46,7 @@ describe "edit batch form and find proper date fields", type: :feature do
 
     #Checks if input values are showing up properly
     it "should display the default values and switchy button", :js => true do
-      expect(page).to have_selector("input[value = 'http://id.loc.gov/vocabulary/iso639-1/en']")
+      expect(page).to have_selector("input[value = 'English']")
       expect(page).to have_selector("input[value = 'http://id.loc.gov/authorities/names/n80017721']")
       expect(page).to have_selector ".glyphicon-random"
     end
