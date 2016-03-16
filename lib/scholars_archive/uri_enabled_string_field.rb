@@ -39,6 +39,9 @@ module ScholarsArchive
       )
     end
 
+
+    #If value object responds to preferred_label return that, otherwise return
+    #the first rdf label
     def label
       if options[:value].respond_to?(:preferred_label)
         options[:value].preferred_label

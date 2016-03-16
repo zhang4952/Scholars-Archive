@@ -40,6 +40,12 @@ RSpec.describe ScholarsArchive::URIEnabledStringField do
         subject.field
       end
     end
+
+    #These next few tests are simply testing the interface of
+    #triplepoweredresource within the urienabledstringfield object. It checks to
+    #see what methods are being called depending on what the value object
+    #responds to. See URIEnabledStringField#label
+
     context "If the triple powered resource responds to preferred_label" do
       let(:value) {instance_double(TriplePoweredResource)}
       before do
