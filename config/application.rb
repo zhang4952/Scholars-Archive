@@ -17,6 +17,8 @@ module ScholarsArchive
     # Configure CAS
     config.rubycas.cas_base_url = APPLICATION_CONFIG["rubycas"]["cas_base_url"]
 
+    config.web_console.development_only = false
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
