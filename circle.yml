@@ -3,6 +3,11 @@ machine:
     version: 2.2.2
 #  java:
 #    version: oraclejdk8
+#dependencies:
+#  cache_directories:
+#    - "tmp"
+#  post:
+#    - mv config/config.example.yml config/config.yml
 dependencies:
   cache_directories:
     - "tmp"
