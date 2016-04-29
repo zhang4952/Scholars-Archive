@@ -58,6 +58,9 @@ gem 'devise-guests', '~> 0.3'
 group :development, :test do
   gem 'fcrepo_wrapper'
   gem 'rspec-rails'
+  gem 'pry-rails'
+  gem 'pry'
+  gem 'pry-byebug'
 end
 
 gem 'passenger'

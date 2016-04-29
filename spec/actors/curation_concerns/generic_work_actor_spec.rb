@@ -1,6 +1,7 @@
 # Generated via
 #  `rails generate curation_concerns:work GenericWork`
 require 'rails_helper'
+require 'spec_helper'
 
 describe CurationConcerns::GenericWorkActor do
   it "has tests" do
