@@ -28,4 +28,12 @@ class SolrDocument
   # Do content negotiation for AF models. 
 
   use_extension( Hydra::ContentNegotiation )
+
+  def nested_geo_points
+    self.[]("nested_geo_points_label_ssim") || []
+  end
+
+  # def nested_geo_bbox
+  #   self.[]("nested_geo_bbox_label_ssim") || []
+  # end
 end
