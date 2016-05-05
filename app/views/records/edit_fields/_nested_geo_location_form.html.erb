@@ -24,6 +24,7 @@
         <h4>Bounding box</h4>
         <%= f.simple_fields_for :nested_geo_bbox do |a| %>
           <li class="field-wrapper">
+
             <% unless a.object.new_record? %>
               <%= a.input :id, :as => :hidden %>
             <% end %>

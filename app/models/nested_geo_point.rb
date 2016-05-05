@@ -4,6 +4,7 @@ class NestedGeoPoint < ActiveTriples::Resource
   property :longitude, :predicate => RDF::URI("http://rs.tdwg.org/dwc/terms/decimalLongitude")
 
   def initialize(uri=RDF::Node.new, parent=nil)
+    # binding.pry
     if uri.try(:node?)
       uri = RDF::URI("#geo_point#{uri.to_s.gsub('_:','')}")
     elsif uri.start_with?("#")
